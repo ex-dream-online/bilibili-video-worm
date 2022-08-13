@@ -65,8 +65,8 @@ for i in range(n):
     #时间
     tm=datetime.datetime.now()
     time1=tm.strftime("%Y-%m-%d %H:%M:%S")
-    print('播放量:%d'%int(view),'评论数:%d'%int(reply),'硬币数:%d'%int(coin),'分享数:%d'%int(share),'点赞数:%d'%int(like),'当前观看人数:%s'%concurrent_viewers,'数据记录时间:%s'%time1)
+    print('播放量:%d'%int(view),'评论数:%d'%int(reply),'硬币数:%d'%int(coin),'分享数:%d'%int(share),'点赞数:%d'%int(like),'当前观看人数:%s'%concurrent_viewers,'数据记录时间:%s'%time1,'剩余抓取次数:%d'%int(n-i-1))
     xx_info=[view,reply,coin,share,like,concurrent_viewers,time1]
     sheet1.append(xx_info)
-    wb.save('数据抓取.xlsx')#可以自定义名字
+    wb.save('数据抓取2.xlsx')#可以自定义名字
 print('数据爬取完毕')
