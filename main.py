@@ -147,7 +147,7 @@ for i in range(n):
         get_concurrent_viewers()
     except Exception:
         print('Zzzzzz...')
-        time.sleep(240)
+        time.sleep(300)
         get_data()
         get_concurrent_viewers()
     get_concurrent_time()
