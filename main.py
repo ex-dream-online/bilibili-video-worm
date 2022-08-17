@@ -93,11 +93,8 @@ def get_concurrent_viewers():
     urlc='&bvid='
     js=requests.session().get(urla+aid+urlb+cid+urlc+bv,headers=header).text
     # 数据正则筛选
-    raw=re.search(r'"total":"\d+',str(js)).group(0)
-    concurrent_viewers=re.search(r'\d+',str(raw)).group(0)
-    if int(concurrent_viewers)>=1000:#判断当前观看人数是否大于1000，需不需要加+号
-        concurrent_viewers=concurrent_viewers+'+'
-        return concurrent_viewers
+    raw=re.search(r'"total":".*",',str(js)).group(0).split('"')
+    concurrent_viewers=raw[3]
     return concurrent_viewers
 # 获取查询时间
 def get_concurrent_time():
@@ -147,7 +144,7 @@ for i in range(n):
         get_concurrent_viewers()
     except Exception:
         print('Zzzzzz...')
-        time.sleep(600)
+        time.sleep(300)
         get_data()
         get_concurrent_viewers()
     get_concurrent_time()
